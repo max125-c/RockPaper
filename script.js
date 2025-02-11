@@ -2,6 +2,7 @@ const userChoiceContainer = document.getElementById("user-choice");
 const computersChoiceContainer = document.getElementById("computer-choice");
 const resultContainer = document.getElementById("result");
 const Body = document.querySelector("body");
+const PopUp = document.getElementById("popUp")
 
 function selectRock() {
     const userChoice = "rock";
@@ -41,24 +42,34 @@ function CheckWhoWon(user1, computersChoice) {
     if ((user1 === "rock" && computersChoice === "scissor") ||
         (user1 === "paper" && computersChoice === "rock") ||
         (user1 === "scissor" && computersChoice === "paper")) {
-        resultContainer.innerHTML = "You WONNNN !!!!!! 😚😚😶‍🌫️🐓🐓";
-        Body.style.backgroundColor = "green";
+        resultContainer.innerText = "You WONNNN !!!!!! 😚😚😶‍🌫️🐓🐓";
+        // Body.style.backgroundColor = "green";
+        PopUp.innerText = "Wow! You Won The Game 🍗🍗🎉🎉🐓🐓"
+        PopUp.style.display = "flex"
     }
     // User lost
     else if ((user1 === "rock" && computersChoice === "paper") ||
         (user1 === "paper" && computersChoice === "scissor") ||
         (user1 === "scissor" && computersChoice === "rock")) {
-        resultContainer.innerHTML = "You FAILL !!!!!!💀💀☠️☠️";
-        Body.style.backgroundColor = "red";
+        resultContainer.innerText = "You FAILL !!!!!!💀💀☠️☠️";
+        // Body.style.backgroundColor = "red";
+        PopUp.innerText = "You Faill ! Try Again 🤝💀💀☠️☠️🤝"; 
+
+        PopUp.style.display = "flex";  // Show pop-up
     }
     // Draw
     else if ((user1 === "rock" && computersChoice === "rock") ||
         (user1 === "paper" && computersChoice === "paper") ||
         (user1 === "scissor" && computersChoice === "scissor")) {
-        resultContainer.innerHTML = "Game will be DRAW !!!!!!🫡🫡🫡🫡";
-        Body.style.backgroundColor = "yellow";
-    }
+        resultContainer.innerText = "Game will be DRAW !!!!!!🫡🫡🫡🫡";
+        // Body.style.backgroundColor = "yellow";
+        PopUp.innerText = "It's a Draw! Try Again 🤝🗡️⚡🤝"; 
+}
 
     // Add popup class to trigger animation
-    resultContainer.classList.add("popup");
+    resultContainer.classList.add("PopUp");
+
+    setTimeout(() => {
+        PopUp.style.display = "none";
+    }, 3000);
 }
